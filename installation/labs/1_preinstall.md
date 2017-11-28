@@ -6,21 +6,21 @@
 Removed symlink /etc/systemd/system/multi-user.target.wants/chronyd.service.
 
 Make sure firewalld is not present or disable it<br>
-<code>[raken@hdp1 ~]$ sudo systemctl stop firewalld
-Failed to stop firewalld.service: Unit firewalld.service not loaded.
-[raken@hdp1 ~]$ sudo systemctl status firewalld
+<code>[raken@hdp1 ~]$ sudo systemctl stop firewalld<br>
+Failed to stop firewalld.service: Unit firewalld.service not loaded.<br>
+[raken@hdp1 ~]$ sudo systemctl status firewalld<br>
 Unit firewalld.service could not be found.</code>
 
 
 <code><b>Check vm.swappiness on all your nodes</b></code><br>
-Set the value to 1 if necessary
+Set the value to 1 if necessary<br>
 	<code>echo "vm.swappiness = 1" >> /etc/sysctl.conf</code><br>
 Run command:<br>
 <code> sysctl vm.swappiness=1 </code>code>
 
 <code><b>Show the mount attributes of your volume(s)</b></code><br>
 If you have ext-based volumes, list the reserve space setting
-XFS volumes do not support reserve space
+XFS volumes do not support reserve space<br>
 <code><br>[root@hdp4 raken]# cat /etc/fstab</code><br>
 #
 <code> /etc/fstab
@@ -81,11 +81,11 @@ Turn on the Dnsmasq server and make sure it starts automatically on reboot.</cod
  chkconfig dnsmasq on
 Dnsmasq is configured by altering the contents of the "/etc/dnsmasq.conf" file and the contents of the "/etc/hosts" file.
 
-The service can be stopped, started and restarted using the following commands.</code>
-
- <code>service dnsmasq stop<br>
+The service can be stopped, started and restarted using the following commands.</code><br>
+<code>
+ service dnsmasq stop<br>
  service dnsmasq start<br>
- service dnsmasq restart</code><br>
+ service dnsmasq restart<br></code>
 
 
 <code>[raken@hdp1 ~]$ nslookup hdp1
@@ -98,12 +98,12 @@ Address: 10.0.0.5
 
 
 <code><b>Show the nscd service is running</b></code><br>
-<code>[root@hdp4 raken]# service nscd start
-Redirecting to /bin/systemctl start  nscd.service
-[root@hdp4 raken]# chkconfig nscd on
-Note: Forwarding request to 'systemctl enable nscd.service'.
-Created symlink from /etc/systemd/system/multi-user.target.wants/nscd.service to /usr/lib/systemd/system/nscd.service.
-Created symlink from /etc/systemd/system/sockets.target.wants/nscd.socket to /usr/lib/systemd/system/nscd.socket.
+<code>[root@hdp4 raken]# service nscd start<br>
+Redirecting to /bin/systemctl start  nscd.service<br>
+[root@hdp4 raken]# chkconfig nscd on<br>
+Note: Forwarding request to 'systemctl enable nscd.service'.<br>
+Created symlink from /etc/systemd/system/multi-user.target.wants/nscd.service to /usr/lib/systemd/system/nscd.service.<br>
+Created symlink from /etc/systemd/system/sockets.target.wants/nscd.socket to /usr/lib/systemd/system/nscd.socket.<br>
 [root@hdp4 raken]# time nslookup www.google.com
 Server:   168.63.129.16
 Address:  168.63.129.16#53
@@ -116,36 +116,36 @@ user  0m0.002s
 sys 0m0.006s</code>
 
 <code><b>Show the ntpd service is running</b></code><br>
-<code>[root@hdp4 raken]# sudo systemctl status ntpd.service
-● ntpd.service - Network Time Service
-   Loaded: loaded (/usr/lib/systemd/system/ntpd.service; enabled; vendor preset: disabled)
-   Active: active (running) since Mon 2017-11-27 13:45:29 EST; 1h 26min ago
-  Process: 12769 ExecStart=/usr/sbin/ntpd -u ntp:ntp $OPTIONS (code=exited, status=0/SUCCESS)
- Main PID: 12770 (ntpd)
-   CGroup: /system.slice/ntpd.service
-           └─12770 /usr/sbin/ntpd -u ntp:ntp -g
+<code>[root@hdp4 raken]# sudo systemctl status ntpd.service<br>
+● ntpd.service - Network Time Service<br>
+   Loaded: loaded (/usr/lib/systemd/system/ntpd.service; enabled; vendor preset: disabled)<br>
+   Active: active (running) since Mon 2017-11-27 13:45:29 EST; 1h 26min ago<br>
+  Process: 12769 ExecStart=/usr/sbin/ntpd -u ntp:ntp $OPTIONS (code=exited, status=0/SUCCESS)<br>
+ Main PID: 12770 (ntpd)<br>
+   CGroup: /system.slice/ntpd.service<br>
+           └─12770 /usr/sbin/ntpd -u ntp:ntp -g<br>
 
-Nov 27 13:45:29 hdp4.northcentralus.cloudapp.azure.com ntpd[12770]: Listen normally on 4 lo ::1 U...3
-Nov 27 13:45:29 hdp4.northcentralus.cloudapp.azure.com ntpd[12770]: Listen normally on 5 eth0 fe8...3
-Nov 27 13:45:29 hdp4.northcentralus.cloudapp.azure.com ntpd[12770]: Listening on routing socket o...s
-Nov 27 13:45:29 hdp4.northcentralus.cloudapp.azure.com systemd[1]: Started Network Time Service.
-Nov 27 13:45:29 hdp4.northcentralus.cloudapp.azure.com ntpd[12770]: 0.0.0.0 c016 06 restart
-Nov 27 13:45:29 hdp4.northcentralus.cloudapp.azure.com ntpd[12770]: 0.0.0.0 c012 02 freq_set kern...M
-Nov 27 13:45:29 hdp4.northcentralus.cloudapp.azure.com ntpd[12770]: 0.0.0.0 c011 01 freq_not_set
-Nov 27 13:45:36 hdp4.northcentralus.cloudapp.azure.com ntpd[12770]: 0.0.0.0 c614 04 freq_mode
-Nov 27 14:01:26 hdp4.northcentralus.cloudapp.azure.com ntpd[12770]: 0.0.0.0 0612 02 freq_set kern...M
-Nov 27 14:01:26 hdp4.northcentralus.cloudapp.azure.com ntpd[12770]: 0.0.0.0 0615 05 clock_sync
+Nov 27 13:45:29 hdp4.northcentralus.cloudapp.azure.com ntpd[12770]: Listen normally on 4 lo ::1 U...3<br>
+Nov 27 13:45:29 hdp4.northcentralus.cloudapp.azure.com ntpd[12770]: Listen normally on 5 eth0 fe8...3<br>
+Nov 27 13:45:29 hdp4.northcentralus.cloudapp.azure.com ntpd[12770]: Listening on routing socket o...s<br>
+Nov 27 13:45:29 hdp4.northcentralus.cloudapp.azure.com systemd[1]: Started Network Time Service.<br>
+Nov 27 13:45:29 hdp4.northcentralus.cloudapp.azure.com ntpd[12770]: 0.0.0.0 c016 06 restart<br>
+Nov 27 13:45:29 hdp4.northcentralus.cloudapp.azure.com ntpd[12770]: 0.0.0.0 c012 02 freq_set kern...M<br>
+Nov 27 13:45:29 hdp4.northcentralus.cloudapp.azure.com ntpd[12770]: 0.0.0.0 c011 01 freq_not_set<br>
+Nov 27 13:45:36 hdp4.northcentralus.cloudapp.azure.com ntpd[12770]: 0.0.0.0 c614 04 freq_mode<br>
+Nov 27 14:01:26 hdp4.northcentralus.cloudapp.azure.com ntpd[12770]: 0.0.0.0 0612 02 freq_set kern...M<br>
+Nov 27 14:01:26 hdp4.northcentralus.cloudapp.azure.com ntpd[12770]: 0.0.0.0 0615 05 clock_sync<br>
 Hint: Some lines were ellipsized, use -l to show in full.</code>
 
 
 <code><b> Check for Passwordless Sudo</b></code><br>
-<code>sudo visudo
-Look for 
- Allow root to run any commands anywhere
-root    ALL=(ALL)       ALL
+<code>sudo visudo<br>
+Look for <br>
+ Allow root to run any commands anywhere<br>
+root    ALL=(ALL)       ALL<br>
 
-And add the following line just below root line
-raken ALL = (ALL) NOPASSWD: ALL
+And add the following line just below root line<br>
+raken ALL = (ALL) NOPASSWD: ALL<br>
 
 <code><b>We Add NOPASSWD: to the file</b></code><br>
 [raken@hdp1 ~]$ sudo vi /etc/sudoers.d/waagent
