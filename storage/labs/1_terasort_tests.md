@@ -1,7 +1,7 @@
 <b>We create user jcquevedo in all nodes:</b><br>
 
 <code>[raken@hdp1 ~]$ sudo useradd jcquevedo<br></code>
-<code>[raken@hdp1 ~]$ sudo passwd jcquevedo<br></code><br>
+<code><br>[raken@hdp1 ~]$ sudo passwd jcquevedo<br></code><br>
 Changing password for user jcquevedo.
 New password: 
 Retype new password: 
@@ -26,7 +26,7 @@ drwxr-xr-x   - jcquevedo supergroup          0 2017-11-28 11:10 /user/jcquevedo<
 drwxrwxr-x   - oozie     oozie               0 2017-11-27 21:17 /user/oozie<br>
 <br><br>
 
-<code><b>[raken@hdp1 ~]$ HADOOP_USER_NAME=jcquevedo time hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar teragen 100000000 /user/jcquevedo/teragen-10gb-test-3</b><br></code>
+<code><b>[raken@hdp1 ~]$ HADOOP_USER_NAME=jcquevedo time hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar teragen 100000000 /user/jcquevedo/teragen-10gb-test-3</b><br></code><br>
 17/11/28 11:32:38 INFO client.RMProxy: Connecting to ResourceManager at hdp2.northcentralus.cloudapp.azure.com/10.0.0.6:8032<br>
 17/11/28 11:32:38 INFO terasort.TeraSort: Generating 100000000 using 2
 17/11/28 11:32:38 INFO mapreduce.JobSubmitter: number of splits:2<br>
