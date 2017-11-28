@@ -21,9 +21,9 @@ Run command:
 <code><b>Show the mount attributes of your volume(s)</b></code>
 If you have ext-based volumes, list the reserve space setting
 XFS volumes do not support reserve space
-<code>[root@hdp4 raken]# cat /etc/fstab
+<code>[root@hdp4 raken]# cat /etc/fstab</code><br>
 #
- /etc/fstab
+<code> /etc/fstab
  Created by anaconda on Mon Mar 20 18:26:52 2017
 
  Accessible filesystems, by reference, are maintained under '/dev/disk'
@@ -73,8 +73,8 @@ For DNS, use nslookup
 10.0.0.7 hdp3.northcentralus.cloudapp.azure.com
 10.0.0.8 hdp4.northcentralus.cloudapp.azure.com</code>
 
-<code>We install DNSMASQ
-# sudo yum install dnsmasq
+<code><b>We install DNSMASQ</b></code><br>
+ sudo yum install dnsmasq
 Turn on the Dnsmasq server and make sure it starts automatically on reboot.</code>
 
 <code># service dnsmasq start
@@ -111,7 +111,6 @@ Address:  168.63.129.16#53
 Name: www.google.com
 Address: 172.217.3.164
 
-
 real  0m0.022s
 user  0m0.002s
 sys 0m0.006s</code>
@@ -142,13 +141,13 @@ Hint: Some lines were ellipsized, use -l to show in full.</code>
 <code><b> Check for Passwordless Sudo</b></code><br>
 <code>sudo visudo
 Look for 
-## Allow root to run any commands anywhere
+ Allow root to run any commands anywhere
 root    ALL=(ALL)       ALL
 
 And add the following line just below root line
 raken ALL = (ALL) NOPASSWD: ALL
 
-We Add NOPASSWD: to the file
+<code><b>We Add NOPASSWD: to the file</b></code><br>
 [raken@hdp1 ~]$ sudo vi /etc/sudoers.d/waagent
 raken ALL = (ALL) NOPASSWD: ALL</code>
 
