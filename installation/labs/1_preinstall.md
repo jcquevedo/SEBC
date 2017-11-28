@@ -1,22 +1,24 @@
+
+<code><b>Disable Chronyd</b></code>
 [raken@hdp1 ~]$ sudo systemctl stop chronyd
 [sudo] password for raken: 
 [raken@hdp1 ~]$ sudo systemctl disable chronyd
 Removed symlink /etc/systemd/system/multi-user.target.wants/chronyd.service.
 
-
-
+Make sure firewalld is not present or disable it
 <code>[raken@hdp1 ~]$ sudo systemctl stop firewalld
 Failed to stop firewalld.service: Unit firewalld.service not loaded.
 [raken@hdp1 ~]$ sudo systemctl status firewalld
 Unit firewalld.service could not be found.</code>
 
 
-
-Check vm.swappiness on all your nodes
+<code><b>Check vm.swappiness on all your nodes</b></code>
 Set the value to 1 if necessary
 	<code>echo "vm.swappiness = 1" >> /etc/sysctl.conf</code>
+Run command:
+<code> sysctl vm.swappiness=1 </code>code>
 
-Show the mount attributes of your volume(s)
+<code><b>Show the mount attributes of your volume(s)</b></code>
 If you have ext-based volumes, list the reserve space setting
 XFS volumes do not support reserve space
 <code>[root@hdp4 raken]# cat /etc/fstab
@@ -32,10 +34,16 @@ UUID=e2bd018e-fe97-4848-80fd-5ba60aafef7e /                       btrfs   subvol
 UUID=ce15c4e7-9c1f-4f07-93a6-b0f5e30f2acd /boot                   xfs     defaults        0 0</code>
 
 
-Disable transparent hugepage support
+<code><b>Disable transparent hugepage support</b></code>
+Se agregan las lineas siguientes al archivo /etc/rc.d/rc.local:
 <code>echo never > /sys/kernel/mm/transparent_hugepage/defrag</code>
+<code>echo never > /sys/kernel/mm/transparent_hugepage/enabled</code>
 
-List your network interface configuration
+Despues ejecuta:
+<code>sudo chmod a+x /etc/rc.d/rc.local && sudo /etc/rc.d/rc.local</code>
+
+
+<code><b>List your network interface configuration</b></code>
 <code>[root@hdp4 raken]# ifconfig
 eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         inet 10.0.0.8  netmask 255.255.255.0  broadcast 10.0.0.255
@@ -56,19 +64,41 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</code>
 
 
-Show that forward and reverse host lookups are correctly resolved
+<code><b>Show that forward and reverse host lookups are correctly resolved</b></code>
 For /etc/hosts, use getent
 For DNS, use nslookup
-<code>[root@hdp4 raken]# nslookup hdp1
-Server:		168.63.129.16
-Address:	168.63.129.16#53
+<code>ADD following lines to /etc/hosts
+10.0.0.4 stdalonejq.northcentralus.cloudapp.azure.com
+10.0.0.5 hdp1.northcentralus.cloudapp.azure.com
+10.0.0.6 hdp2.northcentralus.cloudapp.azure.com
+10.0.0.7 hdp3.northcentralus.cloudapp.azure.com
+10.0.0.8 hdp4.northcentralus.cloudapp.azure.com</code>
 
-Non-authoritative answer:
-Name:	hdp1.northcentralus.cloudapp.azure.com
-Address: 52.237.157.87</code>
+<code>We install DNSMASQ
+# sudo yum install dnsmasq
+Turn on the Dnsmasq server and make sure it starts automatically on reboot.</code>
+
+<code># service dnsmasq start
+# chkconfig dnsmasq on
+Dnsmasq is configured by altering the contents of the "/etc/dnsmasq.conf" file and the contents of the "/etc/hosts" file.
+
+The service can be stopped, started and restarted using the following commands.</code>
+
+# service dnsmasq stop
+# service dnsmasq start
+# service dnsmasq restart</code>
 
 
-Show the nscd service is running
+<code>[raken@hdp1 ~]$ nslookup hdp1
+Server:   10.0.0.4
+Address:  10.0.0.4#53
+
+Name: hdp1.northcentralus.cloudapp.azure.com
+Address: 10.0.0.5
+</code>
+
+
+<code><b>Show the nscd service is running</b></code>
 <code>[root@hdp4 raken]# service nscd start
 Redirecting to /bin/systemctl start  nscd.service
 [root@hdp4 raken]# chkconfig nscd on
@@ -87,7 +117,7 @@ real  0m0.022s
 user  0m0.002s
 sys 0m0.006s</code>
 
-Show the ntpd service is running
+<code><b>Show the ntpd service is running</b></code>
 <code>[root@hdp4 raken]# sudo systemctl status ntpd.service
 ● ntpd.service - Network Time Service
    Loaded: loaded (/usr/lib/systemd/system/ntpd.service; enabled; vendor preset: disabled)
@@ -108,3 +138,23 @@ Nov 27 13:45:36 hdp4.northcentralus.cloudapp.azure.com ntpd[12770]: 0.0.0.0 c614
 Nov 27 14:01:26 hdp4.northcentralus.cloudapp.azure.com ntpd[12770]: 0.0.0.0 0612 02 freq_set kern...M
 Nov 27 14:01:26 hdp4.northcentralus.cloudapp.azure.com ntpd[12770]: 0.0.0.0 0615 05 clock_sync
 Hint: Some lines were ellipsized, use -l to show in full.</code>
+
+
+<code><b> Check for Passwordless Sudo</b></code>
+<code>sudo visudo
+Look for 
+## Allow root to run any commands anywhere
+root    ALL=(ALL)       ALL
+
+And add the following line just below root line
+raken ALL = (ALL) NOPASSWD: ALL
+
+We Add NOPASSWD: to the file
+[raken@hdp1 ~]$ sudo vi /etc/sudoers.d/waagent
+raken ALL = (ALL) NOPASSWD: ALL</code>
+
+
+
+
+
+
