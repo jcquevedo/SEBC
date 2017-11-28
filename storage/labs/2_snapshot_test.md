@@ -15,6 +15,8 @@ Found 1 items<br>
 [raken@hdp1 ~]$ 
 
 
+<code><b> NOTE: Snapshot and recovery made via CM </b></code><br>
+
 <code><b>[raken@hdp1 ~]$ HADOOP_USER_NAME=jcquevedo hadoop fs -rm /user/jcquevedo/precious/</b></code><br>
 rm: `/user/jcquevedo/precious': Is a directory<br>
 
