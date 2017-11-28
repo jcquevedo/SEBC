@@ -1,5 +1,5 @@
 
-<code><b>Disable Chronyd</b></code>
+<code><b>Disable Chronyd</b></code><br>
 [raken@hdp1 ~]$ sudo systemctl stop chronyd
 [sudo] password for raken: 
 [raken@hdp1 ~]$ sudo systemctl disable chronyd
@@ -22,20 +22,19 @@ Run command:
 If you have ext-based volumes, list the reserve space setting
 XFS volumes do not support reserve space
 <code>[root@hdp4 raken]# cat /etc/fstab
+#
+ /etc/fstab
+ Created by anaconda on Mon Mar 20 18:26:52 2017
 
-#
-# /etc/fstab
-# Created by anaconda on Mon Mar 20 18:26:52 2017
-#
-# Accessible filesystems, by reference, are maintained under '/dev/disk'
-# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+ Accessible filesystems, by reference, are maintained under '/dev/disk'
+ See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
 #
 UUID=e2bd018e-fe97-4848-80fd-5ba60aafef7e /                       btrfs   subvol=root     0 0
 UUID=ce15c4e7-9c1f-4f07-93a6-b0f5e30f2acd /boot                   xfs     defaults        0 0</code>
 
 
-<code><b>Disable transparent hugepage support</b></code>
-Se agregan las lineas siguientes al archivo /etc/rc.d/rc.local:
+<code><b>Disable transparent hugepage support</b></code><br>
+Add following lines to /etc/rc.d/rc.local:
 <code>echo never > /sys/kernel/mm/transparent_hugepage/defrag</code>
 <code>echo never > /sys/kernel/mm/transparent_hugepage/enabled</code>
 
@@ -43,7 +42,7 @@ Despues ejecuta:
 <code>sudo chmod a+x /etc/rc.d/rc.local && sudo /etc/rc.d/rc.local</code>
 
 
-<code><b>List your network interface configuration</b></code>
+<code><b>List your network interface configuration</b></code><br>
 <code>[root@hdp4 raken]# ifconfig
 eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         inet 10.0.0.8  netmask 255.255.255.0  broadcast 10.0.0.255
@@ -64,7 +63,7 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</code>
 
 
-<code><b>Show that forward and reverse host lookups are correctly resolved</b></code>
+<code><b>Show that forward and reverse host lookups are correctly resolved</b></code><br>
 For /etc/hosts, use getent
 For DNS, use nslookup
 <code>ADD following lines to /etc/hosts
@@ -79,14 +78,14 @@ For DNS, use nslookup
 Turn on the Dnsmasq server and make sure it starts automatically on reboot.</code>
 
 <code># service dnsmasq start
-# chkconfig dnsmasq on
+ chkconfig dnsmasq on
 Dnsmasq is configured by altering the contents of the "/etc/dnsmasq.conf" file and the contents of the "/etc/hosts" file.
 
 The service can be stopped, started and restarted using the following commands.</code>
 
-# service dnsmasq stop
-# service dnsmasq start
-# service dnsmasq restart</code>
+ service dnsmasq stop
+ service dnsmasq start
+ service dnsmasq restart</code>
 
 
 <code>[raken@hdp1 ~]$ nslookup hdp1
@@ -98,7 +97,7 @@ Address: 10.0.0.5
 </code>
 
 
-<code><b>Show the nscd service is running</b></code>
+<code><b>Show the nscd service is running</b></code><br>
 <code>[root@hdp4 raken]# service nscd start
 Redirecting to /bin/systemctl start  nscd.service
 [root@hdp4 raken]# chkconfig nscd on
@@ -117,7 +116,7 @@ real  0m0.022s
 user  0m0.002s
 sys 0m0.006s</code>
 
-<code><b>Show the ntpd service is running</b></code>
+<code><b>Show the ntpd service is running</b></code><br>
 <code>[root@hdp4 raken]# sudo systemctl status ntpd.service
 ● ntpd.service - Network Time Service
    Loaded: loaded (/usr/lib/systemd/system/ntpd.service; enabled; vendor preset: disabled)
@@ -140,7 +139,7 @@ Nov 27 14:01:26 hdp4.northcentralus.cloudapp.azure.com ntpd[12770]: 0.0.0.0 0615
 Hint: Some lines were ellipsized, use -l to show in full.</code>
 
 
-<code><b> Check for Passwordless Sudo</b></code>
+<code><b> Check for Passwordless Sudo</b></code><br>
 <code>sudo visudo
 Look for 
 ## Allow root to run any commands anywhere
