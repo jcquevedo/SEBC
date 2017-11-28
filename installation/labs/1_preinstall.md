@@ -7,7 +7,7 @@ Removed symlink /etc/systemd/system/multi-user.target.wants/chronyd.service.<br>
 
 Make sure firewalld is not present or disable it<br>
 <code>[raken@hdp1 ~]$ sudo systemctl stop firewalld<br>
-Failed to stop firewalld.service: Unit firewalld.service not loaded.<br>
+<br>Failed to stop firewalld.service: Unit firewalld.service not loaded.<br>
 [raken@hdp1 ~]$ sudo systemctl status firewalld<br>
 Unit firewalld.service could not be found.</code>
 
@@ -16,7 +16,7 @@ Unit firewalld.service could not be found.</code>
 Set the value to 1 if necessary<br>
 	<code>echo "vm.swappiness = 1" >> /etc/sysctl.conf</code><br>
 Run command:<br>
-<code> sysctl vm.swappiness=1 </code>code>
+<code> sysctl vm.swappiness=1 </code>
 
 <code><b>Show the mount attributes of your volume(s)</b></code><br>
 If you have ext-based volumes, list the reserve space setting
@@ -25,10 +25,8 @@ XFS volumes do not support reserve space<br>
 #
 <code> /etc/fstab
  Created by anaconda on Mon Mar 20 18:26:52 2017
-
  Accessible filesystems, by reference, are maintained under '/dev/disk'
  See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
-#
 UUID=e2bd018e-fe97-4848-80fd-5ba60aafef7e /                       btrfs   subvol=root     0 0<br>
 UUID=ce15c4e7-9c1f-4f07-93a6-b0f5e30f2acd /boot                   xfs     defaults        0 0</code><br>
 
@@ -65,7 +63,7 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536<br>
 
 <code><b>Show that forward and reverse host lookups are correctly resolved</b></code><br>
 For /etc/hosts, use getent
-For DNS, use nslookup
+For DNS, use nslookup<br>
 <code>ADD following lines to /etc/hosts on the machine running DNSMASQ only<br>
 10.0.0.4 stdalonejq.northcentralus.cloudapp.azure.com<br>
 10.0.0.5 hdp1.northcentralus.cloudapp.azure.com<br>
