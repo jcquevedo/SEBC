@@ -5,23 +5,23 @@
 [raken@hdp1 ~]$ sudo systemctl disable chronyd
 Removed symlink /etc/systemd/system/multi-user.target.wants/chronyd.service.
 
-Make sure firewalld is not present or disable it
+Make sure firewalld is not present or disable it<br>
 <code>[raken@hdp1 ~]$ sudo systemctl stop firewalld
 Failed to stop firewalld.service: Unit firewalld.service not loaded.
 [raken@hdp1 ~]$ sudo systemctl status firewalld
 Unit firewalld.service could not be found.</code>
 
 
-<code><b>Check vm.swappiness on all your nodes</b></code>
+<code><b>Check vm.swappiness on all your nodes</b></code><br>
 Set the value to 1 if necessary
-	<code>echo "vm.swappiness = 1" >> /etc/sysctl.conf</code>
-Run command:
+	<code>echo "vm.swappiness = 1" >> /etc/sysctl.conf</code><br>
+Run command:<br>
 <code> sysctl vm.swappiness=1 </code>code>
 
-<code><b>Show the mount attributes of your volume(s)</b></code>
+<code><b>Show the mount attributes of your volume(s)</b></code><br>
 If you have ext-based volumes, list the reserve space setting
 XFS volumes do not support reserve space
-<code>[root@hdp4 raken]# cat /etc/fstab</code><br>
+<code><br>[root@hdp4 raken]# cat /etc/fstab</code><br>
 #
 <code> /etc/fstab
  Created by anaconda on Mon Mar 20 18:26:52 2017
@@ -34,7 +34,7 @@ UUID=ce15c4e7-9c1f-4f07-93a6-b0f5e30f2acd /boot                   xfs     defaul
 
 
 <code><b>Disable transparent hugepage support</b></code><br>
-Add following lines to /etc/rc.d/rc.local:
+Add following lines to /etc/rc.d/rc.local:<br>
 <code>echo never > /sys/kernel/mm/transparent_hugepage/defrag</code>
 <code>echo never > /sys/kernel/mm/transparent_hugepage/enabled</code>
 
@@ -83,9 +83,9 @@ Dnsmasq is configured by altering the contents of the "/etc/dnsmasq.conf" file a
 
 The service can be stopped, started and restarted using the following commands.</code>
 
- service dnsmasq stop
- service dnsmasq start
- service dnsmasq restart</code>
+ <code>service dnsmasq stop<br>
+ service dnsmasq start<br>
+ service dnsmasq restart</code><br>
 
 
 <code>[raken@hdp1 ~]$ nslookup hdp1
