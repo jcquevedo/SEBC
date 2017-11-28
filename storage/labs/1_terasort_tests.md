@@ -1,7 +1,7 @@
 <b>We create user jcquevedo in all nodes:</b><br>
 
-<code>[raken@hdp1 ~]$ sudo useradd jcquevedo<br></code>
-<code><br>[raken@hdp1 ~]$ sudo passwd jcquevedo<br></code><br>
+<code>[raken@hdp1 ~]$ sudo useradd jcquevedo<br>
+<br>[raken@hdp1 ~]$ sudo passwd jcquevedo<br></code><br>
 Changing password for user jcquevedo.
 New password: 
 Retype new password: 
