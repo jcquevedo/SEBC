@@ -1,6 +1,6 @@
 <code><b>[raken@hdp4 ~]$ beeline</b></code><br>
 Beeline version 1.1.0-cdh5.9.1 by Apache Hive<br>
-beeline> !connect jdbc:hive2://localhost:10000/default;principal=hive/hdp4.northcentralus.cloudapp.azure.com@RAKENHDP.COM<br>
+<code><b>beeline> !connect jdbc:hive2://localhost:10000/default;principal=hive/hdp4.northcentralus.cloudapp.azure.com@RAKENHDP.COM</b></code><br>
 scan complete in 2ms<br>
 Connecting to jdbc:hive2://localhost:10000/default;principal=hive/<br>hdp4.northcentralus.cloudapp.azure.com@RAKENHDP.COM<br>
 Connected to: Apache Hive (version 1.1.0-cdh5.9.1)<br>
