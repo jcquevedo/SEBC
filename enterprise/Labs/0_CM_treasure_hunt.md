@@ -8,7 +8,7 @@ Administration -> Settings -> Scope Kerberos -> default_realm
 All Services.
 
 <code><b>How do you upgrade the CM agents?</b></code><br>
-It can be done with the wizzard from CM Admin or Manually.
+The CM Server Agent should be upgraded first to be able to upgrade the rest with the wizzard from CM Admin; or every agen can be upgraded Manually. 
 
 <code><b>Give the tsquery statement used to chart Hue's CPU utilization?</b></code><br>
 select cpu_system_rate + cpu_user_rate where category=ROLE and serviceName=$SERVICENAME
