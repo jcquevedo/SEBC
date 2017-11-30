@@ -15,7 +15,7 @@ v18
 }[root@hdp1 instaladores]# <br>
 
 <code><b> List all CM users </b></code><br>
-<b>[root@hdp1 instaladores]# curl -u jcquevedo:cloudera \</b><br>
+<b>[root@hdp1 instaladores]# curl -u jcquevedo:cloudera \ </b><br>
   'http://localhost:7180/api/v18/users'<br>
 {<br>
   "items" : [ {<br>
