@@ -23,9 +23,7 @@ INFO  : OK<br>
 No rows selected (2.352 seconds)<br>
 0: jdbc:hive2://localhost:10000/default> <br>
 
-
-<code><b>[raken@hdp4 ~]$ beeline</b></code><br>
-0: jdbc:hive2://localhost:10000/default> CREATE ROLE sentry_admin;<br>
+<code><b>0: jdbc:hive2://localhost:10000/default> CREATE ROLE sentry_admin;</b></code><br>
 INFO  : Compiling command(queryId=hive_20171129202828_28511b96-4c39-4966-964c-1745fbdc4a7e): CREATE ROLE sentry_admin<br>
 INFO  : Semantic Analysis Completed<br>
 INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)<br>
