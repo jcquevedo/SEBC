@@ -1,7 +1,7 @@
 <b> List the cloud provider you are using (AWS, GCE, Azure, CloudCat, other) </b> <br>
 <code><b>Azure</b></code><br>
 
-<b>List your instances by IP address and DNS name (don't use /etc/hosts for this)<b>
+<b>List your instances by IP address and DNS name (don't use /etc/hosts for this)</b>
 PING host4.northcentralus.cloudapp.azure.com (10.0.0.12) <br>
 PING hosts3.northcentralus.cloudapp.azure.com (10.0.0.11)<br>
 PING hosts2.northcentralus.cloudapp.azure.com (10.0.0.10)<br>
