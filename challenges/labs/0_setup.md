@@ -2,10 +2,10 @@
 <code><b>Azure</b></code><br>
 
 <b>List your instances by IP address and DNS name (don't use /etc/hosts for this)<b>
-<code>PING host4.northcentralus.cloudapp.azure.com (10.0.0.12) <br>
+PING host4.northcentralus.cloudapp.azure.com (10.0.0.12) <br>
 PING hosts3.northcentralus.cloudapp.azure.com (10.0.0.11)<br>
 PING hosts2.northcentralus.cloudapp.azure.com (10.0.0.10)<br>
-PING host1.northcentralus.cloudapp.azure.com (10.0.0.9)<br></code>
+PING host1.northcentralus.cloudapp.azure.com (10.0.0.9)<br>
 
 <b>List the Linux release you are using</b><br>
 <code><b>O[raken@host1 ~]$ cat /etc/*release</b></code><br>
@@ -76,14 +76,14 @@ Error: No matching Packages to list<br>
 
 
 <b>List the /etc/passwd entries for saturn and haley</b>
-<b><b>Do not list the entire file</b></b><br>
+<b>Do not list the entire file</b><<br>
 [root@host1 raken]# cat /etc/passwd |grep 'haley' <br>
 haley:x:2900:2901::/home/haley:/bin/bash<br>
 [root@host1 raken]# cat /etc/passwd |grep 'saturn' <br>
 saturn:x:2800:2902::/home/saturn:/bin/bash<br>
 
 <b>List the /etc/group entries for comets and planets</b><br>
-<b><b>Do not list the entire file</b></b><br>
+<b>Do not list the entire file</b><br>
 [root@host1 raken]# cat /etc/group |grep 'comets'<br>
 comets:x:2901:<br>
 [root@host1 raken]# cat /etc/group |grep 'planets'<br>
