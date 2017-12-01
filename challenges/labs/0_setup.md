@@ -89,7 +89,7 @@ comets:x:2901:<br>
 [root@host1 raken]# cat /etc/group |grep 'planets'<br>
 planets:x:2902:<br>
 
-
+<code><b>[root@sserverjq raken]# yum localinstall mysql-community-common-5.7.20-1.el7.x86_64.rpm mysql-community-libs-* mysql-community-client-5.7.20-1.el7.x86_64.rpm mysql-community-server-5.7.20-1.el7.x86_64.rpm</b></code><br>
 
 
 
