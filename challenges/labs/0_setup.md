@@ -2,10 +2,11 @@
 <code><b>Azure</b></code><br>
 
 <b>List your instances by IP address and DNS name (don't use /etc/hosts for this)</b>
-PING host4.northcentralus.cloudapp.azure.com (10.0.0.12) <br>
-PING hosts3.northcentralus.cloudapp.azure.com (10.0.0.11)<br>
+PING sserverjq.northcentralus.cloudapp.azure.com (10.0.0.5)<br>
+PING host1.northcentralus.cloudapp.azure.com (10.0.0.9) <br>
 PING hosts2.northcentralus.cloudapp.azure.com (10.0.0.10)<br>
-PING host1.northcentralus.cloudapp.azure.com (10.0.0.9)<br>
+PING hosts3.northcentralus.cloudapp.azure.com (10.0.0.11)<br>
+PING host4.northcentralus.cloudapp.azure.com (10.0.0.12)<br>
 
 <b>List the Linux release you are using</b><br>
 <code><b>O[raken@host1 ~]$ cat /etc/*release</b></code><br>
@@ -89,6 +90,7 @@ comets:x:2901:<br>
 [root@host1 raken]# cat /etc/group |grep 'planets'<br>
 planets:x:2902:<br>
 
+<b> INSTALL MYSQL </b>
 <code><b>[root@sserverjq raken]# yum localinstall mysql-community-common-5.7.20-1.el7.x86_64.rpm mysql-community-libs-* mysql-community-client-5.7.20-1.el7.x86_64.rpm mysql-community-server-5.7.20-1.el7.x86_64.rpm</b></code><br>
 
 
