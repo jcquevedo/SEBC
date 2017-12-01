@@ -1,5 +1,5 @@
 <code><b> MySQL Local Install </b></code><br>
-<code><b>[root@sserverjq raken]# yum localinstall mysql-community-common-5.7.20-1.el7.x86_64.rpm mysql-community-libs-* mysql-community-client-5.7.20-1.el7.x86_64.rpm mysql-community-server-5.7.20-1.el7.x86_64.rpm</b></code><br>
+[root@sserverjq raken]# yum localinstall mysql-community-common-5.7.20-1.el7.x86_64.rpm mysql-community-libs-* mysql-community-client-5.7.20-1.el7.x86_64.rpm mysql-community-server-5.7.20-1.el7.x86_64.rpm
 
 <code><b> Show the database hostname </b></code><br>
 <b>[root@sserverjq raken]# hostname</b><br>
